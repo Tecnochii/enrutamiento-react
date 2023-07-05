@@ -1,0 +1,15 @@
+.container-buscador{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.btn-buscador{
+    width: 7rem;
+}
+
+.label-input-buscador{
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+}

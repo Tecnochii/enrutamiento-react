@@ -2,14 +2,13 @@ import Principal from "../components/Principal"
 
 
 
-const Home = ()=>{
+const Home = (props)=>{
     
-
 return(
 
 
     <>
-            <Principal/>
+            <Principal personajes={props.personajes}/>
     </>
 )
 

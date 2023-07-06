@@ -1,18 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Buscador from "./Buscador"
 
 
 
 
-const Principal = () => {
+const Principal = (props) => {
 
-    let [personajes, setPersonajes] = useState([{ name: "Harry", apellido: "Potter" },
-    { name: "Ron", apellido: "Wesley" },
-    { name: "Hermione", apellido: "Gringer" }])
+    let [personajes, setPersonajes] = useState([])
 
     
 
-    let [personajesFiltrados, setPersonajesFiltrados] = useState(personajes)
+    let [personajesFiltrados, setPersonajesFiltrados] = useState([])
 
 
     const filtrarPersonajes = (text) => {
@@ -23,16 +21,26 @@ const Principal = () => {
             setPersonajesFiltrados(personajes)
            }else{
             setPersonajesFiltrados(personajesFiltradosPorTexto)
+            console.log(personajesFiltradosPorTexto);
+            console.log("Filtra");
            }
 
     }
 
+
+    useEffect(()=>{
+        setPersonajes(props.personajes)
+        setPersonajesFiltrados(props.personajes)
+        console.log(props.personajes);
+    },[props.personajes])
+
+
     return (
         <>
-            {personajesFiltrados.map((personaje) => {
-                return <div key={personaje.name}>
+            {personajesFiltrados.map((personaje, index) => {
+                return <div key={index}>
                     <p>{personaje.name}</p>
-                    <p>{personaje.apellido}</p>
+                   
                 </div>
             })
             }

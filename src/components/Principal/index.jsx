@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Buscador from "./Buscador"
+import StateContext from "../../store/StateContext"
 
 
 
+const Principal = () => {
 
-const Principal = (props) => {
+
+    let {characters}  = useContext(StateContext)
 
     let [personajes, setPersonajes] = useState([])
-
     
 
     let [personajesFiltrados, setPersonajesFiltrados] = useState([])
@@ -29,10 +31,10 @@ const Principal = (props) => {
 
 
     useEffect(()=>{
-        setPersonajes(props.personajes)
-        setPersonajesFiltrados(props.personajes)
-        console.log(props.personajes);
-    },[props.personajes])
+        setPersonajes(characters)
+        setPersonajesFiltrados(characters)
+        console.log(characters);
+    },[characters])
 
 
     return (
